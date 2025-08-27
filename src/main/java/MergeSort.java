@@ -2,12 +2,12 @@ public class MergeSort {
 
     public static void main(String[] args) {
 
-        int[] data = new int[10];
+        int[] data = new int[1000];
 
-        // Fill the array with random numbers between 0 and 49
+        // Fill the array with random numbers between 0 and 4999
         for (int j = 1; j <= 10; j++) {
             for (int i = 0; i < data.length; i++) {
-                data[i] = (int) (Math.random() * 50);
+                data[i] = (int) (Math.random() * 5000);
             }
         }
 

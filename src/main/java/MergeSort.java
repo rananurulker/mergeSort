@@ -2,14 +2,7 @@ public class MergeSort {
 
     public static void main(String[] args) {
 
-        int[] data = new int[1000];
-
-        // Fill the array with random numbers between 0 and 4999
-        for (int j = 1; j <= 10; j++) {
-            for (int i = 0; i < data.length; i++) {
-                data[i] = (int) (Math.random() * 5000);
-            }
-        }
+        int[] data =createRandomIntegerArray(10,1000,2000);
 
         System.out.println("Original Array:");
         for (int num : data) {
@@ -43,17 +36,18 @@ public class MergeSort {
 
     public static void merge(int[] array, int left, int mid, int right) {
 
-        int n1 = mid - left + 1;
+        int n1 = mid - left + 1;//Calculate subarray size
         int n2 = right - mid;
 
-        int[] L = new int[n1];
+        int[] L = new int[n1];//Temporary arrays
         int[] R = new int[n2];
-        for (int i = 0; i < n1; i++)
+
+        for (int i = 0; i < n1; i++)//copies the elements from the original array into these temporary arrays
             L[i] = array[left + i];
         for (int j = 0; j < n2; j++)
             R[j] = array[mid + 1 + j];
 
-        int i = 0, j = 0, k = left;
+        int i = 0, j = 0, k = left;//merging while loop i-L(index) j-R k-main array
         while (i < n1 && j < n2) {
             if (L[i] <= R[j]) {
                 array[k] = L[i];
@@ -75,5 +69,13 @@ public class MergeSort {
             j++;
             k++;
         }
+    }
+
+    public static int[] createRandomIntegerArray (int elementCount, int startValue, int endValue){
+        int[] data = new int[elementCount];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = (int) (Math.random() * (endValue-startValue+1))+1000;//0.0 - 4999.999
+        }
+        return data;
     }
 }
